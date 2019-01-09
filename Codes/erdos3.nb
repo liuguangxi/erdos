@@ -1,0 +1,187 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      5876,        178]
+NotebookOptionsPosition[      5325,        154]
+NotebookOutlinePosition[      5683,        170]
+CellTagsIndexPosition[      5640,        167]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"(*", "\[IndentingNewLine]", "\t", 
+  RowBox[{
+   RowBox[{"OEIS", ":", " ", 
+    RowBox[{
+     RowBox[{
+     "A033316", "\[IndentingNewLine]", "Value", " ", "of", " ", "D", " ", 
+      "for", " ", "incrementally", " ", "largest", " ", "values", " ", "of", 
+      " ", "minimal", " ", "x", " ", "satisfying", " ", "Pell", " ", 
+      "equation", " ", 
+      RowBox[{"x", "^", "2"}]}], "-", 
+     RowBox[{"Dy", "^", "2"}]}]}], "=", "1."}], "\[IndentingNewLine]", 
+  "*)"}]], "Input",
+ CellChangeTimes->{{3.714129369711562*^9, 3.714129418196447*^9}, {
+  3.7141301298072968`*^9, 3.7141301308524985`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], ";"}]], "Input"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"pellsolve", "[", 
+   RowBox[{
+    RowBox[{"(", "m_Integer", ")"}], "?", "Positive"}], "]"}], ":=", 
+  RowBox[{"Module", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"cf", ",", "n", ",", "s"}], "}"}], ",", 
+    RowBox[{
+     RowBox[{"cf", "=", 
+      RowBox[{"ContinuedFraction", "[", 
+       RowBox[{"Sqrt", "[", "m", "]"}], "]"}]}], ";", 
+     RowBox[{"n", "=", 
+      RowBox[{"Length", "[", 
+       RowBox[{"Last", "[", "cf", "]"}], "]"}]}], ";", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{"OddQ", "[", "n", "]"}], ",", 
+       RowBox[{"n", "=", 
+        RowBox[{"2", "*", "n"}]}]}], "]"}], ";", 
+     RowBox[{"s", "=", 
+      RowBox[{"FromContinuedFraction", "[", 
+       RowBox[{"ContinuedFraction", "[", 
+        RowBox[{
+         RowBox[{"Sqrt", "[", "m", "]"}], ",", "n"}], "]"}], "]"}]}], ";", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"Numerator", "[", "s", "]"}], ",", 
+       RowBox[{"Denominator", "[", "s", "]"}]}], "}"}]}]}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fx", "[", 
+   RowBox[{
+    RowBox[{"(", "n_Integer", ")"}], "?", "Positive"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"pellsolve", "[", "n", "]"}], "//", "Last"}]}]}], "Input",
+ CellChangeTimes->{{3.714126264393403*^9, 3.714126447880925*^9}, {
+  3.7141265032922225`*^9, 3.7141265164742455`*^9}, {3.7141265556771145`*^9, 
+  3.7141266191692257`*^9}, {3.7141266846113405`*^9, 3.7141266857813425`*^9}, {
+  3.7141301438941216`*^9, 3.7141302053894296`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"n", "=", "100000"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"vn", "=", 
+   RowBox[{"Select", "[", 
+    RowBox[{
+     RowBox[{"Range", "[", "n", "]"}], ",", 
+     RowBox[{
+      RowBox[{"!", 
+       RowBox[{"IntegerQ", "[", 
+        RowBox[{"Sqrt", "[", "#", "]"}], "]"}]}], "&"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{"vsol", "=", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"vn", "[", 
+         RowBox[{"[", "k", "]"}], "]"}], ",", 
+        RowBox[{"fx", "[", 
+         RowBox[{"vn", "[", 
+          RowBox[{"[", "k", "]"}], "]"}], "]"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"k", ",", 
+        RowBox[{"Length", "[", "vn", "]"}]}], "}"}]}], "]"}]}], ";"}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.714126532760674*^9, 3.7141265336342754`*^9}, {
+  3.71412659877999*^9, 3.714126691818554*^9}, {3.7141267346718287`*^9, 
+  3.714126782454713*^9}, {3.714126887732541*^9, 3.7141269966026936`*^9}, {
+  3.7141270274327364`*^9, 3.7141270496227674`*^9}, {3.714127102722842*^9, 
+  3.714127114992859*^9}, {3.714127220523007*^9, 3.714127250223048*^9}, {
+  3.7141302566823196`*^9, 3.714130322171235*^9}, {3.714130368347316*^9, 
+  3.714130374868127*^9}, {3.714130409422188*^9, 3.714130425334216*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"73.93737242950063`", ",", "Null"}], "}"}]], "Output",
+ CellChangeTimes->{{3.714130281392763*^9, 3.7141303319992523`*^9}, 
+   3.714130386770948*^9, 3.714130419655806*^9, 3.7141305025085516`*^9, 
+   3.714517589253746*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"solmax", "=", 
+   RowBox[{"MaximalBy", "[", 
+    RowBox[{"vsol", ",", "Last"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ans", "=", 
+   RowBox[{"solmax", "[", 
+    RowBox[{"[", 
+     RowBox[{"1", ",", "1"}], "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", "[", "ans", "]"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.7141270532227726`*^9, 3.714127054282774*^9}, {
+  3.7141271206128674`*^9, 3.7141271790829487`*^9}, {3.714130213657444*^9, 
+  3.7141302321434765`*^9}, {3.714517487541567*^9, 3.7145174975255847`*^9}}],
+
+Cell[BoxData["92821"], "Print",
+ CellChangeTimes->{
+  3.7141302635463314`*^9, {3.71413031412162*^9, 3.714130332046052*^9}, 
+   3.714130386817748*^9, 3.714130419702606*^9, 3.714130502602152*^9, 
+   3.7145175062616*^9, 3.714517589409746*^9}]
+}, Open  ]]
+},
+WindowSize->{1366, 686},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7412\:670821\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 623, 14, 92, "Input"],
+Cell[1184, 36, 91, 2, 31, "Input"],
+Cell[1278, 40, 1507, 40, 132, "Input"],
+Cell[CellGroupData[{
+Cell[2810, 84, 1362, 35, 72, "Input"],
+Cell[4175, 121, 259, 5, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4471, 131, 596, 14, 72, "Input"],
+Cell[5070, 147, 239, 4, 23, "Print"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

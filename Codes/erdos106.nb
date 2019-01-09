@@ -1,0 +1,130 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      3539,        121]
+NotebookOptionsPosition[      3103,        101]
+NotebookOutlinePosition[      3460,        117]
+CellTagsIndexPosition[      3417,        114]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Clear", "[", "\"\<Global`*\>\"", "]"}], ";"}]], "Input"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"f", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "1", ",", "1", ",", "1", ",", "2", ",", "11", ",", "84", ",", 
+     "676", ",", "5477", ",", "44407"}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"c", "=", 
+   RowBox[{"FindLinearRecurrence", "[", "f", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"lenc", "=", 
+   RowBox[{"Length", "[", "c", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"cb", "=", 
+   RowBox[{"Reverse", "[", 
+    RowBox[{
+     RowBox[{"Flatten", "[", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", 
+        RowBox[{"-", 
+         RowBox[{"Most", "[", "c", "]"}]}]}], "}"}], "]"}], "/", 
+     RowBox[{"Last", "[", "c", "]"}]}], "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.7141260187865715`*^9, 3.714126046944621*^9}, {
+  3.714516806693971*^9, 3.714516827582408*^9}, {3.7145168897017174`*^9, 
+  3.71451696531505*^9}, {3.7145170909576707`*^9, 3.714517097977683*^9}, {
+  3.714517206897074*^9, 3.7145172101886797`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"fb", "=", 
+   RowBox[{"LinearRecurrence", "[", 
+    RowBox[{"cb", ",", 
+     RowBox[{"Reverse", "[", 
+      RowBox[{"Take", "[", 
+       RowBox[{"f", ",", "lenc"}], "]"}], "]"}], ",", 
+     RowBox[{"20", "+", "lenc"}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"fbsum", "=", 
+   RowBox[{"Total", "[", 
+    RowBox[{"fb", "[", 
+     RowBox[{"[", 
+      RowBox[{"5", ";;"}], "]"}], "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"p", "=", 
+   RowBox[{"Numerator", "[", "fbsum", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"q", "=", 
+   RowBox[{"Denominator", "[", "fbsum", "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.7145169695738573`*^9, 3.7145170454055905`*^9}, {
+  3.7145170823776555`*^9, 3.7145171240765285`*^9}, {3.7145172617311707`*^9, 
+  3.714517378138575*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ans", "=", 
+   RowBox[{"Mod", "[", 
+    RowBox[{
+     RowBox[{"p", "*", "q"}], ",", 
+     RowBox[{
+      RowBox[{"10", "^", "9"}], "+", "7"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", "[", "ans", "]"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.714517387872992*^9, 3.7145174353126755`*^9}},
+ NumberMarks->False],
+
+Cell[BoxData["583116707"], "Print",
+ CellChangeTimes->{{3.714517422661053*^9, 3.7145174281210628`*^9}, 
+   3.7145175895345464`*^9}]
+}, Open  ]]
+},
+WindowSize->{759, 546},
+WindowMargins->{{Automatic, 63}, {31, Automatic}},
+FrontEndVersion->"10.3 for Microsoft Windows (64-bit) (2015\:5e7412\:670821\
+\:65e5)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 91, 2, 31, "Input"],
+Cell[652, 24, 1030, 28, 92, "Input"],
+Cell[1685, 54, 865, 24, 92, "Input"],
+Cell[CellGroupData[{
+Cell[2575, 82, 378, 12, 108, "Input"],
+Cell[2956, 96, 131, 2, 23, "Print"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
