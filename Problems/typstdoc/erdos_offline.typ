@@ -39,8 +39,8 @@
 ]
 #align(right + bottom)[
   #text(size: 14pt)[
-    Revision #text(fill: main-color)[*v2024.1*] \
-    March 2024
+    Revision #text(fill: main-color)[*v2024.2*] \
+    August 2024
   ]
 ]
 ]
@@ -4473,4 +4473,171 @@ For $j = 26$ and $n = 123456$.
 Find $Q(j,n) mod 1000000007$.
 
 #problem-tag(("endgame 10.0",))
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+// Problem #358
+#problem-heading(358, [Diagonal Dominance])
+
+You are given an $n times n$ matrix filled with the numbers $1,2,3,dots,n^2$. The matrix is arranged such that every row (from left to right) and every column (from top to bottom) is sorted in strictly increasing order. Let $a_(i j)$ denote the number at the intersection of the $i$-th row and $j$-th column.
+
+For each $i$ where $1<=i<=n$, define $b_i$ as the number of distinct entries that can appear in the diagonal position $a_(i i)$. Your task is to find the sum $b_1+b_2+dots.c+b_n$ for $n=1000$.
+
+#problem-tag(("numberphile24",))
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+// Problem #359
+#problem-heading(359, [Android 17])
+
+Let $S(n)$ denote the number of x such that $1<=x<n$ and $x^23 equiv 1 thin (mod n)$.
+
+For example, $S(4)=1$ because $1^23 equiv 1 thin (mod 4)$, but $2^23 equiv 0 thin (mod 4)$ and $3^23 equiv 3 thin (mod 4)$.
+
+Let $F(k)$ denote the number of $n$ between $1$ and $10^18$ such that $S(n)=k$.
+
+Find the summation $(sum_(n=10^9)^infinity F(n)) mod thin (10^9+7)$.
+
+#problem-tag(("numberphile24",))
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+// Problem #360
+#problem-heading(360, [Phir Se Wahi Phi])
+
+Let $C(n)$ be $sum (phi.alt(a) times b)$ taken over ordered pairs $(a,b)$ of positive integers for which $a times b$ divides $n$.
+
+Let $F(k)=sum_(i=1)^k C(i)/i$.
+
+Let $x=sum_(k=1)^infinity F(k)/(k times 2^k)$.
+
+Output $floor(x times 10^5)$.
+
+#problem-tag(("numberphile24",))
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+// Problem #361
+#problem-heading(361, [Hyperoperation])
+
+Find $a^a^a^a^a^a^dots.up$ till _infinite_ modulo $n$, where $n=7908922576125228087$ and $a=321298371289423$.
+
+#problem-tag(("numberphile24",))
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+// Problem #362
+#problem-heading(362, [Big Josephus])
+
+There are $n$ balloons in a cyclic room numbered from $1$ to $n$ (Balloon $2$ comes after $1$, Balloon $3$ comes after $2$, ..., Balloon $1$ comes after Balloon $n$). You start at $1$. Every turn you skip one balloon and pop the next balloon until there is only one balloon left.
+
+Let $F(n)$ denote the number on the last remaining balloon. Find the sum of $F(1)+F(2)+F(3)+dots.c+F(182721378)$ and submit the answer modulo $10^9+7$.
+
+#problem-tag(("numberphile24",))
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+// Problem #363
+#problem-heading(363, [Are you my Dad?])
+
+Young Jake walked into a bar. There were $n$ men inside the bar, one of whom was Jake's Dad, whom he had never met. He makes a guess on who is his father among the $n$ men and asks him, "Are you my Dad?". If he finds his dad, he returns home with his dad. Otherwise, the man $A$ whom Jake asked takes pity on him. Then, man $A$ guesses from the other $n-1$ men who might be his dad. The man $A$ takes Jake to his guessed person $B$ and asks him if he is Jake's dad. If the guessed man $B$ is Jake's dad, they go home; otherwise, man $B$ takes Jake from man $A$ and continues to guess who might be Jake's father like man $A$ did.
+
+At the point when the current man who Jake is with makes a guess on a person who has already been checked, Jake leaves the current man, goes back to the bar entry, and again guesses who might be his dad. (Jake will never guess the same person or let any other man guess the same person that has already been checked before.) This process continues until Jake finds his Dad.
+
+What is the expected number of times Jake says, "Are you my Dad?" when $n=400$?
+
+Let $M=10^9+7$. It can be shown that the answer can be expressed as an irreducible fraction $p/q$, where $p$ and $q$ are integers and $q equiv.not 0 thin (mod M)$.
+
+Output the integer equal to $p dot q^(-1) mod M$.
+
+#problem-tag(("numberphile24",))
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+// Problem #364
+#problem-heading(364, [Nice Fractions])
+
+There is a monster who is destroying planet Earth. To counter them, there is a special force of heroes. The heroes are numbered according to their strengths. The strength of the $k$-th hero is the $k$-th largest number in the set
+$
+S = {x | x = inline(sum_(i=1)^20 a_i/6^i), 0<=a_i<=5 "for each" 1<=i<=20}.
+$
+Find the strength of the hero who is weaker than $553453543$ heroes.
+
+Let $M=10^9+7$. It can be shown that the answer can be expressed as an irreducible fraction $p/q$, where $p$ and $q$ are integers and $q equiv.not 0 thin (mod M)$.
+
+Output the integer equal to $p dot q^(-1) mod M$. In other words, output such an integer $x$ that $0<=x<M$ and $x dot q equiv p thin (mod M)$.
+
+#problem-tag(("numberphile24",))
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+// Problem #365
+#problem-heading(365, [Watch your Enemy])
+
+In geometry, a tesseract or $4$-cuboid is a four-dimensional hypercuboid, analogous to a two-dimensional rectangle and a three-dimensional cuboid. We have a Tesseract with dimensions $a$, $b$, $c$, and $d$.
+
+Bob and Alice are playing a game with the Tesseract. In one move, a player can perform the following action:
+
+They choose one dimension $s$ out of the four of the Tesseract. They change the dimension to $i$ units. This move is only allowed if:
+$ gcd(s, s-i) = s-i "and" i<s "and" i>0 $
+
+For example, they can change the dimension of length $8$ to a dimension of length $7$, $6$ or $4$.
+
+Both players are smart, so it is assumed they play optimally. The player who cannot perform a move loses.
+
+Let $F(n)$ indicate the number of sets of dimensions $(a,b,c,d)$ where $1<=a,b,c,d<=n$ such that Alice wins if Bob starts the game. Two sets are considered different if any one of the dimensions is not the same in both sets. For example, $(1,2,1,1)$ and $(2,1,1,1)$ are different sets.
+
+Find $F(324325346214122) mod 987654321$.
+
+#problem-tag(("numberphile24",))
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+// Problem #366
+#problem-heading(366, [Prime Dices])
+
+You have a set of dice, where each die has a number of sides that corresponds to a prime number less than $10^7$. For example, the set includes dice with $2,3,5,7$ and other prime numbers of sides.
+
+A die is chosen randomly from this set. After selecting the die, you keep tossing it until every face of the die has appeared at least once. For instance, for a $3$-sided die, you might toss the die multiple times until you have seen all three faces ($1$, $2$ and $3$) at least once.
+
+The sequence of tosses could look something like $2,1,1,2,3$, which means it took $5$ tosses to see all three faces.
+
+Your task is to find the expected number of tosses required to see all faces of the die you picked. Report the result modulo $10^9+7$.
+
+#problem-tag(("numberphile24",))
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+// Problem #367
+#problem-heading(367, [Circular Dilemma])
+
+Consider a rectangle with dimensions $l=1234567891$ and $b=1987654321$. A point is selected uniformly at random within the rectangle. From this point, a circle is drawn with a radius chosen uniformly between $0$ and the maximum possible radius that allows the circle to remain entirely within the rectangle. What is the expected value of the $"area of circle"/pi mod thin (10^9+7)$?
+
+#problem-tag(("numberphile24",))
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+// Problem #368
+#problem-heading(368, [Skill Issue])
+
+In a knockout tournament with $n=2^k$ players, each player's skill is independently drawn from a uniform distribution on the interval $[0,1]$. When two players with skills $S_1$ and $S_2$ compete, the "lead" of the game is given by $|S_1-S_2|$, and the player with the higher skill advances to the next round.
+
+The organizers aim to minimize the total sum of the leads across all matches in the tournament.
+
+For example, if there are $4$ players with skills $0.3,0.6,0.4,0.5$, an optimal pairing strategy might be to match players with skills $0.6$ and $0.5$ and players with skills $0.3$ and $0.4$, resulting in a total lead sum of $(0.6-0.5)+(0.4-0.3)+(0.6-0.4)=0.4$.
+
+Given $k=12345678987654321$, find the expected sum of leads modulo $10^9+7$.
+
+#problem-tag(("numberphile24",))
 //------------------------------------------------------------------------------
