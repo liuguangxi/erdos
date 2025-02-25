@@ -4,6 +4,41 @@
   author: ("Guangxi Liu")
 )
 
+#pdf.embed(
+  "attachments/12.txt",
+  relationship: "supplement",
+  mime-type: "text",
+  description: "data for problem 12"
+)
+
+#pdf.embed(
+  "attachments/14.txt",
+  relationship: "supplement",
+  mime-type: "text",
+  description: "data for problem 14"
+)
+
+#pdf.embed(
+  "attachments/86.txt",
+  relationship: "supplement",
+  mime-type: "text",
+  description: "data for problem 86"
+)
+
+#pdf.embed(
+  "attachments/137.txt",
+  relationship: "supplement",
+  mime-type: "text",
+  description: "data for problem 137"
+)
+
+#pdf.embed(
+  "attachments/w6pTmLj.gif",
+  relationship: "supplement",
+  mime-type: "gif",
+  description: "figure for problem 321"
+)
+
 #set page(
   paper: "a4"
 )
@@ -34,13 +69,10 @@
   #link("https://erdos.sdslabs.co")[#text(fill: main-color)[erdos.sdslabs.co]]*
 ]
 #v(1em)
-#text(size: 14pt)[
-  Compiled by *Guangxi Liu*
-]
 #align(right + bottom)[
   #text(size: 14pt)[
-    Revision #text(fill: main-color)[*v2024.2*] \
-    August 2024
+    Revision #text(fill: main-color)[*v2025.1*] \
+    February 2025
   ]
 ]
 ]
@@ -57,7 +89,7 @@
   footer: [
     #set align(center)
     #text(number-type: "old-style")[
-      Page #counter(page).display("1 of 1", both: true)
+      Page #context counter(page).display("1 of 1", both: true)
     ]
   ]
 )
@@ -1573,7 +1605,8 @@ Give answer as $1000 p$.
 
 Find $67$th term of the sequence whose initial terms are as follows:
 
-#par(leading: 10pt)[
+#[
+#set par(leading: 10pt)
 - $0$th term: power of $3$ in $binom(66,24)$ \
 - $1$st term: power of $2$ in $binom(73,27)$ \
 - $2$nd term: power of $3$ in $binom(3280,1367)$ \
@@ -3683,7 +3716,7 @@ You are required to find the value of $f(1) dot f(2) dot (3)$.
 
 Let $S$ be a set of size $n$. Let $T_k$ be the set of all ordered $k$-tuples $(A_1,A_2,A_3,A_4,dots,A_k)$ where $A_i$ is a subset of $S$, such that $A_1 union A_2 union A_3 union A_4 union dots.c union A_k = S$.
 
-Given $n = 2718281828$ and $k = 3141592653$, find the sum of $abs(A_1 sect A_2 sect A_3 sect A_4 sect dots.c sect A_k)^2$ for all $k$-tuples $(A_1,A_2,A_3,A_4,dots,A_k)$ belonging to $T_k$.
+Given $n = 2718281828$ and $k = 3141592653$, find the sum of $abs(A_1 inter A_2 inter A_3 inter A_4 inter dots.c inter A_k)^2$ for all $k$-tuples $(A_1,A_2,A_3,A_4,dots,A_k)$ belonging to $T_k$.
 #text(fill: main-dark-color)[#footnote[
   $abs(X)$ denote the size of set $X$.
 ]]
@@ -3787,7 +3820,7 @@ Given $N = 777 dots.c 777$ ($19$ digits). Find the number of values $r$ ($0 <= r
 #problem-heading(281, [Open Sets])
 
 Let $n = 192837$. For each $i$ from $1$ to $n$, let $x_i$ and $y_i$ be two independently chosen random numbers from $(0,1)$. Let $a_i = min(x_i,y_i)$, $b_i = max(x_i,y_i)$, and $S$ be the intersection of open intervals $(a_i,b_i)$. In other words,
-$ S = sect.big_(i=1)^n (a_i,b_i) $
+$ S = inter.big_(i=1)^n (a_i,b_i) $
 
 It is easy to see that $S$ is itself an open interval. Find the expected length of $S$.
 
@@ -4640,4 +4673,154 @@ For example, if there are $4$ players with skills $0.3,0.6,0.4,0.5$, an optimal 
 Given $k=12345678987654321$, find the expected sum of leads modulo $10^9+7$.
 
 #problem-tag(("numberphile24",))
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+// Problem #374
+#problem-heading(374, [Equation Cascade])
+
+Let $f:bb(Z)_(>=0) -> bb(Z)_(>=0)$ be a function satisfying the functional equations: $f(3x)=f(x)$, and $f(9x+3a+b)=(a+3b) dot f(3x+1)-(a+3b-1) dot f(x) space.en forall a in {0, 1, 2}, b in {1, 2}, a+x>0$. Let $f(0)=0$, $f(1)=1$, $f(2)=2$ and $f(4)=4$.
+
+Let $g(x)=f(x)-1 space.en forall x>0$. Find the number of values between $1$ and $330$ for which $f(g^6(x))=40$. (Here, $g^2(x) = g(g(x)) != (g(x))^2$).
+
+#problem-tag(("endgame 11.0",))
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+// Problem #375
+#problem-heading(375, [Sigma Sigma Sigma Boy])
+
+Let $f(i)$ denote the $i$th Fibonacci number ($f(0)=0$, $f(1)=1$). Based on the given definition, find the value of $S(1234567) mod 1000000007$.
+
+$S(n)=sum_(i=1)^n sum_(j=0)^(i-1) sum_(k=j+1)^i f(i) dot f(j) dot f(k)$
+
+#problem-tag(("endgame 11.0",))
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+// Problem #376
+#problem-heading(376, [Infinite XOR])
+
+Given a binary array $A$ (consisting of $1$'s and $0$'s) of length $n$ ($=438276543893501974$), we define a time-dependent transformation:
+$ A[i]^((t))=A[i+1]^((t-1)) xor A[i+2]^((t-1)) xor dots.c xor A[n]^((t-1)) $
+where $xor$ denotes the bitwise XOR operation. At each time step, the last element of the array becomes $0$, $A[n]^((t))=0$ for all $t>0$.
+
+For a configuration of the array A:
+$ F(A) = sum_(t=0)^infinity sum_(i=1)^n A[i]^((t)) $
+
+Your task is to compute the sum of $F(A)$ over all $2^n$ possible configurations of $A$. Since the answer may be large, report it modulo $998244353$.
+
+#problem-tag(("endgame 11.0",))
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+// Problem #377
+#problem-heading(377, [Perfect Fit])
+
+You are supposed to create a regular $12$-sided polygon which has a side length of $d$ units. To do so, you have to make use of tiles in the shape of a square or an equilateral triangle and having a side length of $1$ unit. You have an infinite set of each tiles and you must form the $12$-sided polygon completely without overlap.
+
+Calculate the number of ways to tile such a polygon with $d=391489$ modulo $1000000007$. Two ways are considered identical if one can be obtained from the other by rotation.
+
+#problem-tag(("endgame 11.0",))
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+// Problem #378
+#problem-heading(378, [Sum of Sums])
+
+Consider an unknown array $A$. We only know the following information about $A$:
+- It contains $6154$ integers
+- Its minimum value is equal to $9647$
+- Its maximum value is equal to $78417$
+
+Consider the set of numbers $S$, containing all possible sums of the array $A$. A set is defined to only contain distinct elements, any repetition of elements will be ignored.
+
+What is the total sum of all the elements of $S$?
+
+#problem-tag(("endgame 11.0",))
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+// Problem #379
+#problem-heading(379, [Awe-Sum Vectors])
+
+You are given $n$ number of arbitrary $9$-dimensional vectors with integral coordinates.
+
+An awesome vector is defined as a vector which has all of its coordinates divisible by $4$.
+
+Find the minimum value of $n$ such that you can always choose a group of $4$ vectors whose sum results in an awesome vector.
+
+#problem-tag(("endgame 11.0",))
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+// Problem #380
+#problem-heading(380, [Rotary Fractal])
+
+Let circle $C_0$ be defined by the equation $x^2+y^2-2 x r-2 y r+r^2=0$ and circle $C_1$ by $x^2+y^2-6 x r-2 y r+9 r^2=0$. For all $i>1$, circle $C_i$ is drawn such that it touches $C_0$, $C_(i-1)$ and the $x$-axis.
+
+#align(center)[
+  #v(5pt)
+  #include "figures/p380.typ"
+  #v(5pt)
+]
+
+Consider the case $r=195643523275200$. Count the number of circles $C_i (i>=0)$ having an integer radius.
+
+#problem-tag(("endgame 11.0",))
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+// Problem #381
+#problem-heading(381, [Folding Game])
+
+Imagine on your table, you have a paper in the shape of an isosceles right triangle $A B C$, where $A B$ are the endpoints of the hypotenuse. An operation is defined by the following folds. You join $A$ to $C$ and $B$ to $C$ forming a square. You then join the two diagonally opposite vertices of the newly formed square (previously, the midpoints of $A C$ and $B C$ respectively), creating a smaller right angled triangle.
+
+#align(center)[
+  #v(5pt)
+  #include "figures/p381.typ"
+  #v(5pt)
+]
+
+If you unfold the paper completely after one operation, you may notice that the crease made is inwards. We define this as a valley. Multiple operations may also lead to the formation of an outwards crease, which is defined as a mountain.
+
+Let $M$ be the total length of all mountains and $V$ be the total length of all valleys after $319587138362$ such operations. Consider the simple reduced fraction $p/q$ to be the ratio of $M$ and $V$.
+
+Return $3 dot p + 2 dot q$ modulo $1000000007$.
+
+#problem-tag(("endgame 11.0",))
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+// Problem #382
+#problem-heading(382, [Circular Probability])
+
+We have two concentric circles of radius $1$ unit and $2$ units. Two points are chosen at random in the space between the two circles. The probability that the line segment joining the two points doesn't enter (or intersects at two points with) the inner circle is in the form of $a/b+c/(d dot upright(pi))$.
+
+What is the value of $a^2+b^2+c^2+d^2$?
+
+#problem-tag(("endgame 11.0",))
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+// Problem #383
+#problem-heading(383, [Forwardest Difference])
+
+An array $A$ of length $n=3901585$, is defined by $a[i]=i^i (1<=i<=n)$.
+
+A forward difference array is the array formed by the differences of consecutive elements, i.e. $[a_1,a_2,a_3]$ is replaced by $[a_2-a_1,a_3-a_2]$.
+
+Calculate the only value remaining in the $(n-1)$th forward difference array of $A$ modulo $1000000007$.
+
+#problem-tag(("endgame 11.0",))
 //------------------------------------------------------------------------------
