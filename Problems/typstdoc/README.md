@@ -1,6 +1,6 @@
 # Erdős Unofficial Offline Edition in Typst
 
-Collect all problems from [Erdős](https://erdos.sdslabs.co). Current version is **v2025.1**, where a total of 327 problems (from #1 to #383, the numbers are **NOT** sequential!) are included.
+Collect all problems from [Erdős](https://erdos.sdslabs.co). Current version is **v2025.1**, where a total of 336 problems (from #1 to #392, the numbers are **NOT** sequential!) are included.
 
 To compile the document, you need to install [`typst`](https://github.com/typst/typst) first, then run
 

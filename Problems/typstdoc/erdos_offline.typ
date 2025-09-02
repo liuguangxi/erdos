@@ -1,7 +1,8 @@
 // Global setup
 #set document(
   title: [Erdős Unofficial Offline Edition],
-  author: ("Guangxi Liu")
+  author: ("Guangxi Liu"),
+  date: none
 )
 
 #pdf.embed(
@@ -66,13 +67,12 @@
 #v(-2em)
 #text(size: 18pt)[
   *Problem Set From
-  #link("https://erdos.sdslabs.co")[#text(fill: main-color)[erdos.sdslabs.co]]*
+  #link("https://erdos.sdslabs.co")[#text(fill: main-color)[_erdos.sdslabs.co_]]*
 ]
 #v(1em)
 #align(right + bottom)[
   #text(size: 14pt)[
-    Revision #text(fill: main-color)[*v2025.1*] \
-    February 2025
+    Revision #text(fill: main-color)[*v2025.2*]
   ]
 ]
 ]
@@ -4823,4 +4823,157 @@ A forward difference array is the array formed by the differences of consecutive
 Calculate the only value remaining in the $(n-1)$th forward difference array of $A$ modulo $1000000007$.
 
 #problem-tag(("endgame 11.0",))
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+// Problem #384
+#problem-heading(384, [DDIIVVIISSOORRSS])
+
+Find the number of divisors of $314159!$ which have exactly $24$ divisors. Since the number may be large, compute it modulo a prime. Given prime is: $1000000007$.
+
+#problem-tag(("numberphile25",))
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+// Problem #385
+#problem-heading(385, [El Clasico])
+
+Determine the number of ways to fill a $2 times 10^6$ grid with the integers $1,2,dots,2 times 10^6$, using each integer exactly once, such that the entries strictly increase from left to right in each row and strictly increase from top to bottom in each column. Since the answer may be large, compute it modulo a prime. Given prime is: $1000000007$.
+
+#problem-tag(("numberphile25",))
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+// Problem #386
+#problem-heading(386, [Counting Jigsaws])
+
+You are given a rectangular grid of size $2718281 times 1618033$, which you have to fill using the given tiles.
+
+#align(center)[
+  #v(5pt)
+  #include "figures/p386.typ"
+  #v(5pt)
+]
+
+Note that each tile is created by cutting and pasting right isosceles triangles from a square of unit area. And thus each tile also has unit area.
+
+A valid tiling is defined as an arrangement of tiles in which:
+
+there is no overlap between the tiles,
+there is no empty space left in the rectangle,
+each and every piece should lie completely within the rectangle's boundaries.
+You are free to rotate any tile by multiples of $90degree$. Two tilings are said to be different if the tile used differs (belongs to different coloured group) in atleast one position.
+
+Find the total number of valid tilings modulo a prime. Given prime is: $1000000007$.
+
+#problem-tag(("numberphile25",))
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+// Problem #387
+#problem-heading(387, [Moody Sum])
+
+Let $x = 310842209572055$ and $y = 42082520835355$. Then, find $S mod "prime"$.
+
+$ S = sum_(i = 0)^(y-1) ((x dot i) med mod y) $
+
+Given prime is: $1000000007$.
+
+#problem-tag(("numberphile25",))
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+// Problem #388
+#problem-heading(388, [Forward Differences Again])
+
+Cornifer is taking a mathematics examination where he is asked to construct the forward difference table for a sequence of $n=998877665544332211$ given numbers.
+
+A forward difference table is constructed as follows:
+
+The first column contains the original sequence of $n$ numbers.\
+The second column is obtained by subtracting each number from the one immediately below it.\
+The third column is obtained in the same way, but using the second column.\
+This process continues until only a single number remains in the last column.
+
+For example, the forward difference table for $[2, 3, 5, 7]$ will be:
+
+#align(center)[
+#grid(
+  columns: (2em,) * 4,
+  inset: 0.5em,
+  stroke: (x, y) => if x + y <= 3 {luma(50%)},
+  grid.cell([2]), [1], [1], [-1],
+  [3], [2], [0], [],
+  [5], [2], [], [],
+  [7], [], [], [],
+)
+]
+
+Cornifer has a very simple calculator. It can only remember the most recent computed result and the currently entered number, and it supports only the four basic operations ($+$, $-$, $times$, $div$). As Cornifer is a dumb child, he requires calculator for his each and every calculation.
+
+If Cornifer uses the most recent result directly in the next calculation, it does not count as extra effort. Only when he explicitly types a new number into the calculator does it count as effort. After each calculation, Cornifer can also note down the result on his paper, so that he may reuse it later when needed.
+
+For example:
+Suppose Cornifer computes $1 + 2 = 3$. Then, using the stored result, he immediately does $3 + 4 = 7$. This entire process requires typing three numbers in total $(1, 2, 4)$. The reuse of the result "$3$" in the second step does not require retyping, though he may write down "$3$" or "$7$" on his paper if he needs them later.
+
+Your task is to determine the minimum number of times Cornifer must explicitly type a number into the calculator in order to compute the entire forward difference table for a sequence of size $n$. Since the number may be large, compute it modulo a prime. Given prime is: $1000000007$.
+
+#problem-tag(("numberphile25",))
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+// Problem #389
+#problem-heading(389, [Knightmare])
+
+For a binary sequence $s$, let $g(s) = sum_(i=1)^|s| s[i] dot 2^(i-1)$.
+
+Let $F_i$ be the $i^"th"$ Fibonacci number and $F_0 = 0, F_1=1$. Let $f_x$ be the sequence of binary digits (with no trailing zeroes) such that $x =sum_(i=1)^(|f_x|) f_x [i] dot F_(i+1)$ and $g(f_x)$ is maximised. For example, $f_7 = 0101$.
+
+Monomon manually computed $f_i$ for all $1 <= i <= F_69$. However, his lowly student Quirrel reinterpreted the binary sequence as binary representation of a number (with LSB as the leftmost character).
+
+Quirrel calculated the sum of the numbers he thought he received. Find $sum_(i=1)^F_69 g(f_i)$. Since the answer may be large, compute it modulo a prime. Given prime is: $1000000007$.
+
+#problem-tag(("numberphile25",))
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+// Problem #390
+#problem-heading(390, [Distinct Differences])
+
+Let $a_1, a_2, dots, a_2025$ be a sequence of positive integers such that the consecutive differences $a_1 - a_2, a_2 - a_3, dots, a_2024 - a_2025$ are all pairwise distinct. Let $x$ be the minimum number of distinct values that must appear in the sequence?
+
+Find $x^x mod "prime"$. Given prime is: $1000000007$.
+
+#problem-tag(("numberphile25",))
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+// Problem #391
+#problem-heading(391, [Kolossal Kit-Kat])
+
+You start with a chocolate bar of size $1 times 10^100$. In each operation, you choose a break point uniformly at random among the possible integer positions, split the bar into two pieces, keep the left piece, and discard the right one. You continue doing this operation until only a $1 times 1$ piece remains.
+
+Determine the probability that at some point during the process the left piece's size is $1 times 141421356237$. Let this probability be represented by $p/q$, where $p$ and $q$ are coprime. Answer $p dot q^(-1) mod "prime"$. Given prime is: $1000000007$.
+
+#problem-tag(("numberphile25",))
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+// Problem #392
+#problem-heading(392, [Flop Deal])
+
+You have a card with the value $0.98$. In a single turn, a computer throws a card on the table with a uniformly distributed random real value in the range $[0, 1]$. You then randomly throw a card from the set of cards available to you. If the card you threw has a greater value than the computer's card, you keep both the cards. Otherwise, you lose both the cards.
+
+Let $E$ be expected number of turns for which the game will be played. Find $E^E mod "prime"$. Given prime is: $1000000007$.
+
+#problem-tag(("numberphile25",))
 //------------------------------------------------------------------------------
