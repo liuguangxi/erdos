@@ -43,7 +43,7 @@ $$ \text{Total} = 14 + 6i $$
 The answer is $14 + 6i$.
 
 
-```
+```python
 import sys
 
 # Increase recursion depth
