@@ -5,38 +5,28 @@
   date: none
 )
 
-#pdf.embed(
+#pdf.attach(
   "attachments/12.txt",
-  relationship: "supplement",
-  mime-type: "text",
   description: "data for problem 12"
 )
 
-#pdf.embed(
+#pdf.attach(
   "attachments/14.txt",
-  relationship: "supplement",
-  mime-type: "text",
   description: "data for problem 14"
 )
 
-#pdf.embed(
+#pdf.attach(
   "attachments/86.txt",
-  relationship: "supplement",
-  mime-type: "text",
   description: "data for problem 86"
 )
 
-#pdf.embed(
+#pdf.attach(
   "attachments/137.txt",
-  relationship: "supplement",
-  mime-type: "text",
   description: "data for problem 137"
 )
 
-#pdf.embed(
+#pdf.attach(
   "attachments/w6pTmLj.gif",
-  relationship: "supplement",
-  mime-type: "gif",
   description: "figure for problem 321"
 )
 
@@ -72,7 +62,7 @@
 #v(1em)
 #align(right + bottom)[
   #text(size: 14pt)[
-    Revision #text(fill: main-color)[*v2025.2*]
+    Revision #text(fill: main-color)[*v2026.1*]
   ]
 ]
 ]
@@ -4976,4 +4966,272 @@ You have a card with the value $0.98$. In a single turn, a computer throws a car
 Let $E$ be expected number of turns for which the game will be played. Find $E^E mod "prime"$. Given prime is: $1000000007$.
 
 #problem-tag(("numberphile25",))
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+// Problem #393
+#problem-heading(393, [Good Matrix])
+
+Let $M$ be an $m$-dimensional matrix with *positive integers entries* of size $(n+1) times (n+1) times dots.c times (n+1)$. The indices of the matrix range from $0$ to $n$ in each dimension.
+
+The matrix $M$ is called *good* if, for every lattice path from the origin $(0,0,dots,0)$ to the point $(n,n,dots,n)$, and for any two matrix elements $u$ and $v$ lying on that path:
+$ gcd(u,v) != min(u,v) $
+
+Let $f(M,x)$ be an indicator function defined as:
+$
+f(M,x)=cases(
+  1\,quad "if there exists an element in" M "divisible by" x,
+  0\,quad "otherwise"
+)
+$
+
+The *value* of the matrix $V(M)$ is defined as the sum over all prime numbers $p$:
+$ V(M) = sum_(p in PP) sum_(i=1)^infinity f(M,p^i) $
+
+*Find the minimum possible value of $V(M)$ over all good matrices $M$.*
+
+Given $n = 570835313$, $m = 1843$.
+
+#line(length: 100%, stroke: 0.75pt+luma(40%))
+
+A *lattice path* from $(0,0,dots,0)$ to $(n,n,dots,n)$ in m dimensions is a sequence of points $P_0,P_1,dots,P_k$ such that:\
+$P_0=(0,0,dots,0)$\
+$P_k=(n,n,dots,n)$\
+For each step $j$, the difference $P_(j+1)-P_j=e_i$ for some standard basis vector $e_i$ (meaning each step increases exactly one coordinate by $1$).
+
+#problem-tag(("combinatorics",))
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+// Problem #394
+#problem-heading(394, [Bizaare Sum of Prime Strings])
+
+Let $z_1,z_2,dots,z_2026$ be the complex roots of the equation:
+$ x^2026 = 1/4^2026 $
+
+Let $p(i)$ denote the number of binary strings of length $i$ that are *prime*. A string is *prime* if it cannot be formed by the repetition of a shorter string.
+
+Examples:
+- 101101 is *not* prime (it is the repetition of 101).
+- 101010 is *not* prime (it is the repetition of 10).
+- 1101 is *prime*.
+
+Calculate the following double summation:
+$ sum_(i=1)^infinity sum_(j=1)^2026 (p(i)(z_j)^i)/(1-(z_j)^i) $
+
+If the answer can be represented as a fraction $p/q$ then output $(p dot.c q^(-1)) mod 998244353$ where $q^(-1)$ is the modulo inverse of $q$.
+
+#problem-tag(("combinatorics", "algebra"))
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+// Problem #396
+#problem-heading(396, [Harmony of Clocks])
+
+In a festival of size $n$, there are *$n$ reference clocks* numbered from $1$ to $n$.
+
+The reference clock $k$ rings exactly once every $k$ units of time, i.e., at times: $k,2k,3k,dots$. This period cannot be changed.
+
+There are also *$n$ control clocks* numbered from $1$ to $n$. Each control clock must choose an integer *cycle length* $T$, and it will ring at times: $T,2T,3T,dots$.
+
+For organizational reasons, at the moment when *control clock $k$* is ringing, *all reference clocks $i$ such that $i dot.c k <= n$ must also be ringing*.
+
+Among all valid choices, each control clock chooses the *smallest possible cycle length*.
+
+The *harmony value* of a festival of size $n$ is defined as the product of the cycle lengths of all $n$ control clocks.
+
+Given $X=12345678$, compute the value:
+$ lr(size: #50%, (sum_(n=1)^X "harmony value of festival of size" n)) mod med (10^9 + 7) $
+
+#problem-tag(("number theory",))
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+// Problem #397
+#problem-heading(397, [HarmonyTastyyy.. Penguins])
+
+In the penguin city, there are *$N$ penguins*. Since penguins are believed to be very tasty, *Shourya* has decided to feed them to the polar bear king.
+
+The tastiness of the $i$-th penguin is defined as :
+$ T(i) = i wide (1 <= i <= N) $
+
+Shourya will take *$J$ turns*. In each turn, he selects one penguin and feeds it to the polar bear king. Penguins are magical and can respawn instantly, so a particular penguin may be selected any number of times.
+
+The probability that Shourya selects the $i$-th penguin in a given turn is:
+$ P(i) = (1/2)^i $
+
+Let $X_k$ denote the tastiness of the penguin selected in the $k$-th turn. Define: $M = max(X_1, X_2, dots, X_J)$.
+
+For $J = 696969, N -> infinity$, Compute: $EE[M]$.
+
+If $EE[M]$ can be represented as a fraction $p/q$ then output $(p dot.c q^(-1))$ mod $(10^9+7)$ where $q^(-1)$ is the modulo inverse of $q$.
+
+#line(length: 100%, stroke: 0.75pt+luma(40%))
+
+*Expectation Value:*\
+If a random variable $X$ has possible outcomes $x_1, x_2, dots, x_k$ with corresponding probabilities $p_1, p_2, dots, p_k$, then the expectation of $X$ is defined as:
+$ EE[X] = x_1 p_1 + x_2 p_2 + dots.c + x_k p_k. $
+
+#problem-tag(("probability",))
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+// Problem #398
+#problem-heading(398, [...snoisrevnI])
+
+Create a permutation $p$ from the first $n$ natural numbers by randomly choosing either the largest or the smallest available number at each step.
+
+*Example:*
+For $n = 5$, a possible permutation formed this way is $5, 1, 4, 3, 2$.
+
+Let $italic("inv")$ be the *number of inversions* in the formed permutation $p$. Then,
+$
+s(x) = (EE[italic("inv")]x)/1! + (EE[italic("inv")^2]x^2)/2! + (EE[italic("inv")^3]x^3)/3! + dots.
+$
+
+Calculate the value of: $s(ln 5) mod 998244353$ for $n = 2026^2$.
+
+#line(length: 100%, stroke: 0.75pt+luma(40%))
+
+*Inversion:*\
+For a permutation $p$, a pair of indices $(i,j)$ is called an inversion if: $i < j$ and $p(i) > p(j)$.
+
+*Expectation Value:*\
+If a random variable $X$ has possible outcomes $x_1, x_2, dots, x_k$ with corresponding probabilities $p_1, p_2, dots, p_k$, then the expectation of $X$ is defined as:
+$ EE[X] = x_1 p_1 + x_2 p_2 + dots.c + x_k p_k. $
+
+#problem-tag(("combinatorics", "probability"))
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+// Problem #399
+#problem-heading(399, [One over Zero])
+
+Let $x$ and $y$ be two *non-negative even integers* such that $x >= y$. Define: $n = x + y$.
+
+A binary string $s$ of length $n$ is said to be *valid* if it satisfies the following conditions:
+
+- The string $s$ contains exactly $x$ occurrences of the character `1` and exactly $y$ occurrences of the character `0`.
+- For every prefix length $i med (1 <= i <= n)$, the number of `1`'s in the prefix $s[1..i]$ is *at least* the number of `0`'s in that prefix, i.e.,
+$ "No. of" #raw("1")"'s in" s[1..i] >= "No. of" #raw("0")"'s in" s[1..i] $
+- Let $m = n/2$, then the number of `1`s in the prefix $s[1..m]$ is $x/2$:
+$ "No. of" #raw("1")"'s in" s[1..m] = x/2 $
+
+Given: $x=29228$ and $y=12384$.
+
+Output the number of valid binary strings satisfying all of the above conditions mod $10^9+7$.
+
+#problem-tag(("combinatorics",))
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+// Problem #400
+#problem-heading(400, [Too Much Sigma])
+
+Calculate:
+$
+sum_(n=1)^(10^7) sum_(alpha=1)^n sum_(x=0)^(alpha-1) sum_(y=0)^(alpha-1)((7654567x+7653567y)mod alpha)
+$
+
+Output the _ans_ modulo $(10^9+7)$.
+
+#problem-tag(("number theory",))
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+// Problem #401
+#problem-heading(401, [Playing with balls])
+
+Umar has *$4n$ boxes* arranged in a row and *$k$ identical balls*. He wants to distribute *all $k$ balls* into these $4n$ boxes.
+
+The boxes are categorized into three types:
+
+- *Boxes $1$ to $n$*:\ Each box can contain *at most $a$ balls*.
+
+- *Boxes $n+1$ to $2n$*:\ Each box can contain *at most $2a + 1$ balls*.
+
+- *Boxes $2n+1$ to $4n$*:\ Each box can contain *only a multiple of $(a+1)$ balls*, i.e., $0, a+1, 2a+2, 3a+3, dots$.
+
+Umar is very busy today, so he asks you to find the *number of ways* to distribute the balls.
+
+Since the answer can be very large, output it modulo $10^9 + 7$.
+
+[Given: $n = 1000005, quad a = 676767676767, quad k = 8888888888888$]
+
+#problem-tag(("combinatorics",))
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+// Problem #402
+#problem-heading(402, [Your Maths Dream])
+
+We call an ordered pair of integers $(A,B)$ *valid* if the following conditions hold.
+
+- $A$ is an *8-digit decimal integer* and $B$ is a *7-digit decimal integer*.
+- Let their decimal representations be:
+$ A = a_1 a_2 a_3 a_4 a_5 a_6 a_7 a_8, quad B = b_1 b_2 b_3 b_4 b_5 b_6 b_7 $
+#h(1em)where $a_1 != 0$, $b_1 != 0$ and all digits belong to the set ${0,1,dots,9}$.
+
+Define a number $C$ by digitwise concatenation as follows:
+
+- The first digit $a_1$ of $A$ is copied directly into $C$.
+- For each $i = 1,2,dots,7$, compute $p_i = a_(i+1) times b_i$, and append $p_i$ to $C$ as a *two-digit block*, allowing leading zeros (for example, if $p_i = 2$, append $02$).
+
+Thus, $C = "concat"lr(size: #125%, (a_1, thick "two-digit"(a_2 b_1), thick "two-digit"(a_3 b_2), thick dots, thick "two-digit"(a_8 b_7)))$.
+
+For example, if $A = 123$ and $B = 12$, then $C = (1)(02)(06) = 10206$.
+
+The pair $(A,B)$ is said to be *valid* if: $ A times B = C$.
+
+Let $S$ denote the set of all valid pairs $(A,B)$.
+
+Compute: $sum_((A,B) in S) A times B$.
+
+#problem-tag(("math",))
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+// Problem #403
+#problem-heading(403, [Stupid Polynomial (Easy Version)])
+
+Let $bold(m),bold(n) in ZZ^+$ be fixed positive integers.
+
+Let *$S(m)$* denote the set of all polynomials *$p(x) = a_0 + a_1  x + a_2  x^2 + dots.c + a_k x^k, a_k > 0, k >= 0$* satisfying the following conditions:
+
+- Each coefficient *$a_i in {0,1,2,dots,m^3-1}$*.
+- *$p(m) = n$*.
+
+Output $|S(94)|$ modulo $10^9+7$ for $n = 1234567891011$.
+
+#problem-tag(("combinatorics",))
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+// Problem #404
+#problem-heading(404, [Stupid Polynomials (Hard Version)])
+
+Let $bold(m),bold(n) in ZZ^+$ be fixed positive integers.
+
+Let *$S(m)$* denote the set of all polynomials *$p(x) = a_0 + a_1  x + a_2  x^2 + dots.c + a_k x^k, a_k > 0, k >= 0$* satisfying the following conditions:
+
+- Each coefficient *$a_i in {0,1,2,dots,m^3-1}$*.
+- *$p(m) = n$*.
+
+Determine the sum:
+*$ sum_(m=2)^n |S(m)| $*
+
+Output _ans_ modulo $10^9+7$ for $n = 123456789101112$.
+
+#problem-tag(("combinatorics",))
 //------------------------------------------------------------------------------
