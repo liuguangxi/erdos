@@ -62,7 +62,7 @@ $$
 
 Therefore:
 $$
-|S(m)| = #{(B,C)\in\mathbb Z_{\ge 0}^2 : mB + m^2C \le n}.
+|S(m)| = \#{(B,C)\in\mathbb Z_{\ge 0}^2 : mB + m^2C \le n}.
 $$
 
 This is just integer points under a line.
@@ -95,7 +95,7 @@ $$
 and $\sum_{C=0}^t C = t(t+1)/2$, giving:
 $$
 \boxed{|S(m)| = (t+1)(q+1) - m\cdot \frac{t(t+1)}{2}}
-\quad\text{where }t=\left\lfloor \frac{n}{m^2}\right\rfloor,; q=\left\lfloor \frac{n}{m}\right\rfloor.
+\quad\text{where }t=\left\lfloor \frac{n}{m^2}\right\rfloor,\; q=\left\lfloor \frac{n}{m}\right\rfloor.
 $$
 
 Special case: if $m>\sqrt n$ then $t=0$ and
