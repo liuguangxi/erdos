@@ -62,7 +62,7 @@
 #v(1em)
 #align(right + bottom)[
   #text(size: 14pt)[
-    Revision #text(fill: main-color)[*v2026.1*]
+    Revision #text(fill: main-color)[*v2026.2*]
   ]
 ]
 ]
@@ -5204,12 +5204,12 @@ Compute: $sum_((A,B) in S) A times B$.
 // Problem #403
 #problem-heading(403, [Stupid Polynomial (Easy Version)])
 
-Let $bold(m),bold(n) in ZZ^+$ be fixed positive integers.
+Let $m,n in ZZ^+$ be fixed positive integers.
 
-Let *$S(m)$* denote the set of all polynomials *$p(x) = a_0 + a_1  x + a_2  x^2 + dots.c + a_k x^k, a_k > 0, k >= 0$* satisfying the following conditions:
+Let $S(m)$ denote the set of all polynomials $p(x) = a_0 + a_1  x + a_2  x^2 + dots.c + a_k x^k, a_k > 0, k >= 0$ satisfying the following conditions:
 
-- Each coefficient *$a_i in {0,1,2,dots,m^3-1}$*.
-- *$p(m) = n$*.
+- Each coefficient $a_i in {0,1,2,dots,m^3-1}$.
+- $p(m) = n$.
 
 Output $|S(94)|$ modulo $10^9+7$ for $n = 1234567891011$.
 
@@ -5221,17 +5221,255 @@ Output $|S(94)|$ modulo $10^9+7$ for $n = 1234567891011$.
 // Problem #404
 #problem-heading(404, [Stupid Polynomials (Hard Version)])
 
-Let $bold(m),bold(n) in ZZ^+$ be fixed positive integers.
+Let $m,n in ZZ^+$ be fixed positive integers.
 
-Let *$S(m)$* denote the set of all polynomials *$p(x) = a_0 + a_1  x + a_2  x^2 + dots.c + a_k x^k, a_k > 0, k >= 0$* satisfying the following conditions:
+Let $S(m)$ denote the set of all polynomials $p(x) = a_0 + a_1  x + a_2  x^2 + dots.c + a_k x^k, a_k > 0, k >= 0$ satisfying the following conditions:
 
-- Each coefficient *$a_i in {0,1,2,dots,m^3-1}$*.
-- *$p(m) = n$*.
+- Each coefficient $a_i in {0,1,2,dots,m^3-1}$.
+- $p(m) = n$.
 
 Determine the sum:
-*$ sum_(m=2)^n |S(m)| $*
+$ sum_(m=2)^n |S(m)| $
 
 Output _ans_ modulo $10^9+7$ for $n = 123456789101112$.
 
 #problem-tag(("combinatorics",))
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+// Problem #405
+#problem-heading(405, [Phi-nding the GCD])
+
+Let $N in ZZ^+$ be a fixed positive integer.
+
+Let $phi.alt(x)$ denote Euler's totient function, defined as the number of positive integers less than or equal to $x$ that are coprime to $x$.
+
+Determine the number of pairs $(x,k)$ satisfying the following conditions:
+
+- $1 <= x,k <= N$.
+- $gcd(x,k) = phi.alt(x)$.
+
+Output *ans* modulo $998244353$ for $N = 10^18$.
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+// Problem #406
+#problem-heading(406, [Bitwise-101])
+
+Let $m,n,c in ZZ^+$ be fixed positive integers.
+
+Let $f(x) = x plus.o c$ and $s(p) = sum_(i=0)^(2^m-1) f(i #math.class("relation", "&") p)$.
+
+Here, $\&$ denotes the bitwise AND operator and $plus.o$ denotes the bitwise XOR operator.
+
+Determine $sum_(p=0)^n s(p)$.
+
+The values of the parameters are: $n=2026^4$, $c=((2^2026^2-1)/(2^2026-1))^2$ and $m=1234567891011$.
+
+Output the value of the *answer* modulo $998244353$.
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+// Problem #407
+#problem-heading(407, [Primest Value])
+
+Let $n in ZZ^+$ be a fixed positive integer.
+
+For any positive integer $a$, let its prime factorization be $a = p_1^b_1  p_2^b_2 dots.c p_k^b_k$, where, $p_1,p_2,dots,p_k$ are distinct prime factors of $a$.
+
+Define $ f(a) = p_1^2 + p_2^2 + dots.c + p_k^2$.
+
+Determine the maximum value of  $f(a)$ over all $1<=a<=n$. Report the answer modulo $998244353$.
+
+Here, $n = 12345678910$.
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+// Problem #408
+#problem-heading(408, [Too touchy...])
+
+Let $n in ZZ^+$ be a fixed positive integer. There are $n$ people, exactly *one* of whom is *initially infected*.
+
+At each step, a uniformly random permutation $p_1,p_2,dots,p_n$ of the $n$ people is chosen from all $n!$ possible permutations.
+
+During this step, *all people touch their corresponding person simultaneously*: for every $1<=i<=n$, person $i$ touches person $p_i$. Consider the undirected graph formed by these touches: for every $i$, there is an edge between person $i$ and person $p_i$. The infection spreads through this entire graph during the step. More precisely, if an uninfected person $j$ is connected to an already infected person $i$ by *any path* in this graph, then person $j$ becomes infected by the end of the step. The process continues by choosing a new uniformly random permutation at each step.
+
+Determine the *expected number of steps* required until all $n$ people become infected, for $n=2026$.
+
+Since the answer may be a fraction $p/q$, output
+$ p dot q^(-1) med (mod 998244353) $
+where $q^(-1)$ denotes the multiplicative inverse of $q$ modulo $998244353$.
+
+*Illustration:*
+
+Suppose there are $6$ people and, during one particular step, the chosen permutation is $[2,3,4,1,6,5]$.
+
+If only person $1$ was infected before this step, then people $1,2,3,4$ all become infected by the end of this step, and $5,6$ remain unaffected.
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+// Problem #409
+#problem-heading(409, [Detour])
+
+Let $n in ZZ^+$ be a fixed positive integer.
+
+Consider an $n times n$ grid of points, with coordinates $(a,b)$ where $1 <= a,b <= n$.
+
+We start at the point $(1,1)$. From any point $(a,b)$, we can make either of the following moves, provided the resulting point remains within the grid:
+
+- $(a,b) -> (a,b+a)$
+- $(a,b) -> (a+b,b)$
+
+Determine the *number of distinct points* that are reachable from $(1,1)$ by applying some sequence of valid moves for $n=9696969$.
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+// Problem #410
+#problem-heading(410, [Expectations])
+
+For a permutation $p$ of the first $n$ natural numbers, for all $p_i >1$, we define $d_i$ as the minimum distance from position $i$ to a position $j$ such that $p_i > p_j$, i.e.
+
+If $p_i=1: d_i=0$
+
+If $p_i>1: d_i = min |j-i| : p_j < p_i$
+
+Now define, $X = sum_(i=1)^n d_i$
+
+Calculate the expected value of $X$ over all possible $n$ length permutations i.e. $EE[X]$ for $n=123456$.
+
+Since the answer may be a fraction $p/q$, output
+$ p dot q^(-1) med (mod 998244353) $
+where $q^(-1)$ denotes the modulo inverse of $q$ modulo $998244353$.
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+// Problem #411
+#problem-heading(411, [Divisor Alchemy])
+
+Let $sigma_k (n)$ denote the sum of the $k$-th powers of all divisors of $n$.
+
+That is, $sigma_k (n) = sum_(d|n) d^k$
+
+Let $phi.alt(x)$ denote Euler's totient function, defined as the number of positive integers less than or equal to $x$ that are coprime to $x$.
+
+Define $F_k (n) = sum_(d|n) phi.alt(d) sigma_k (n/d)$
+
+Calculate the following product for $N = 1234567890,  M = 10^15$:
+$
+product_(k=1)^M (F_k (N))/(sigma_k (N))
+$
+
+Since the answer may be a fraction $p/q$, output $p dot q^(-1) med (mod 10^9+7)$, where $q^(-1)$ denotes the modulo inverse of $q$ modulo $10^9+7$.
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+// Problem #412
+#problem-heading(412, [Dichotomizer])
+
+For positive integers $n$ and $k$, define the following two functions.
+
+- Let $d(n,k)$ denote the number of partitions\* of $n$ into exactly $k$ *distinct positive parts*.
+
+- Let $o(n,k)$ denote the number of partitions of $n$ into exactly $k$ *odd positive parts*, not necessarily distinct.
+
+For completeness, we define $d(0,0)=o(0,0)=1$.
+
+Let $f(m)$ = $sum_(i=0)^m ((sum_(k=0)^i d(i,k)) dot (sum_(k=0)^(floor.l (m-i)/2 floor.r) o(m-i-k,k)))$
+
+Output the *value* of the summation $sum_(i=1)^N f(i)^2$ modulo $998244353$ for $N=10^4$.
+
+\* For a positive integer $n$, a partition of $n$ is a way of writing $n$ as a sum of one or more positive integers, where the order of the parts does not matter.
+
+For example, the partitions of $4$ are: $4, quad 3+1, quad 2+2, quad 2+1+1,quad 1+1+1+1$
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+// Problem #413
+#problem-heading(413, [Permutation Split])
+
+Consider a permutation $P=(P_1,P_2,dots,P_(2N))$ of the integers $1,2,dots,2N$.
+
+Divide the elements of $P$ into two disjoint subsequences\* $A=(A_1,A_2,dots,A_N)$ and $B=(B_1,B_2,dots,B_N)$.
+
+The division is called *valid* if, for every $1 <= i <= N$, the element $A_i$ appears before $B_i$ in original permutation $P$.
+
+The *score* of a valid division is defined as $sum_(i=1)^N (B_i-A_i)$.
+
+Let $M$ be the maximum possible score over all permutations $P$ of $(1,2,dots,2N)$ and all valid divisions of $P$.
+
+Find the number of permutations $P$ for which there exists at least one valid division whose score is exactly $M$.
+
+Given $N=449499949$
+
+Output the number of such permutations modulo $998244353$.
+
+\* A subsequence is obtained by deleting zero or more elements from the original sequence without changing the relative order of the remaining elements.
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+// Problem #414
+#problem-heading(414, [Wild Cards])
+
+A standard deck contains *52 cards*. The cards are selected uniformly at random without replacement until exactly *7 cards* have been selected.
+
+The *Ace is considered to have value $1$*, while the numbered cards have their usual values. All *face cards* --- Jack, Queen, and King --- are considered *wild cards*.
+
+A *wild card* can be assigned to any positive integer value. You may choose the values of the wild cards *optimally* after seeing the 7 selected cards.
+
+For the selected cards, define the *first mex* as the smallest positive integer that does not occur in the set of card values, after optimally assigning values to the wild cards.
+
+Similarly, define the *second mex* as the smallest positive integer that does not occur in the set of card values, after optimally assigning values to the wild cards and adding the first mex in the set.
+
+The score is defined as
+$
+"Score"=("first mex") times ("second mex").
+$
+
+Your goal is to use the wild cards optimally so as to *maximize the score* for every possible set of 7 selected cards.
+
+Find the *expected value of this maximum possible score* over all ways of selecting 7 cards from the deck.
+
+Since the answer may be a fraction $p/q$, output
+$ p dot q^(-1) med (mod 998244353) $
+where $q^(-1)$ denotes the modulo inverse of $q$ modulo $998244353$.
+//------------------------------------------------------------------------------
+
+
+//------------------------------------------------------------------------------
+// Problem #415
+#problem-heading(415, [Human Calculator])
+
+A calculator has the following buttons: $0,1,2,dots,9,+,-$
+
+Alice presses exactly $n$ buttons, where each button is chosen *independently and uniformly at random* from these $12$ buttons.
+
+The sequence of pressed buttons is interpreted as an arithmetic expression and evaluated from left to right according to the following rules:
+
+- Digits form numbers in the usual way. For example, pressing $1,2,3$ forms the number $123$.
+
+- A $+$ or $-$ button determines the sign of the next number.
+
+- If multiple $+$ and $-$ buttons occur consecutively, they are combined according to their signs. Consider any consecutive sequence of sign buttons. If the sequence contains an *even number of $-$ signs*, it is equivalent to a *single $+$ sign*. If the sequence contains an *odd number of $-$ signs*, it is equivalent to a *single $-$ sign*.
+
+- If the expression ends with one or more $+$ or $-$ buttons, those trailing signs are considered to be followed by a number $0$. Thus, an expression consisting of only signs contributes $0$.
+
+For example, $+---12+-+-3++$ is interpreted as $-12+3+0 = -9$.
+
+Alice evaluates the resulting expression after all $n$ buttons have been pressed.
+
+Determine the *Expected value* of the resulting expression for $n=67280421310721$.
+
+Since the answer may be a fraction $p/q$, output
+$ p dot q^(-1) med (mod 998244353) $
+where $q^(-1)$ denotes the modulo inverse of $q$ modulo $998244353$.
 //------------------------------------------------------------------------------
